@@ -1,0 +1,29 @@
+The game will run on a tick system
+
+Entities:
+    1. The Player
+    2. Zombies
+    3. Villigers (reg NPCs)
+
+Items:
+    1. Gold (currency)
+    2. Apple (gives health)
+    3. Zombie Remains (traded to villigers for gold)
+    4. bandages
+    5. bread
+
+Locations:
+    Home | Windy Path | Forest | Short Path | Village
+    
+    # Dark Forest is below Forrest
+
+    1. Village (zombies won't spawn here)
+    2. Forest
+    3. Home
+    4. Dark Forest (stronger zombies)
+    5. Widny Path
+    6. Short Path
+
+Status Effects:
+    1. Bleeding
+    2. Tired
