@@ -4,9 +4,9 @@ import random
 
 # Zombie, Skeleton, robber, bear
 Danger_Levels = {
-    1: ["Lvl. 1 Zombie", "Lvl. 1 Skeleton", "Robber"],
-    2: ["Lvl. 2 Zombie", "Lvl. 2 Skeleton", "Robber"],
-    3: ["Lvl. 3 Zombie", "Lvl. 3 Skeleton", "Robber", "Bear"]
+    1: ("Lvl. 1 Zombie", "Lvl. 1 Skeleton", "Robber"),
+    2: ("Lvl. 2 Zombie", "Lvl. 2 Skeleton", "Robber"),
+    3: ("Lvl. 3 Zombie", "Lvl. 3 Skeleton", "Robber", "Bear")
 }
 
 Damage = {
@@ -44,13 +44,18 @@ class Encounter:
                 return
             else:
                 print("You couldn't run away")
-        
+
+        else: 
+            self.turn()
         
         self.mob_attack()
 
             
     def attack(self):
-        pass
+        print(f"You attacked the {self.mob}")
+        if bool(random.choices((0, 1), weights = self.player.crit_chances)):
+            print(f"CRITICAL HIT! Your did {self.player.weapon_damage + self.player.crit_damage}")
+        print("You did ")
 
     def mob_attack(self):
         pass
