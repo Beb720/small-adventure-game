@@ -10,27 +10,25 @@ Danger_Levels = {
 }
 
 Danger_Levels2 = {
-    1: {
+    1: (
             #(Mob name, damage, crit damage, crit chances)
-            "Lvl. 1 Zombie": {"damage": 5, "crit_damage": 12, "crit_chances": (75, 25)},
-            "Lvl. 1 Skeleton":{"damage": 7, "crit_damage": 11, "crit_chances": (90, 10)},
-            "Robber": {"damage": 14, "crit_damage": 19, "crit_chances": (70, 30)}
-        },
-    
-    2: {
-            "Lvl. 2 Zombie":  {"damage": 10, "crit_damage": 17, "crit_chances": (75, 25)},
-            "Lvl. 2 Skeleton": {"damage": 12, "crit_damage": 16, "crit_chances": (90, 10)},
-            "Robber": {"damage": 20, "crit_damage": 25, "crit_chances": (70, 30)}
-        },
+            ("Lvl. 1 Zombie", 5, 12, (75, 25)),
+            ("Lvl. 1 Skeleton", 7, 11, (90, 10)),
+            ("Robber", 14, 19, (70, 30))
+        ),
+    2: (
+            ("Lvl. 2 Zombie", 10, 17, (75, 25)),
+            ("Lvl. 2 Skeleton", 12, 16, (90, 10)),
+            ("Robber", 20, 25, (70, 30))
+        ),
 
     3: (
             ("Lvl. 3 Zombie", 15, 22, (75, 25)),
             ("Lvl. 3 Skeleton", 17, 21, (90, 10)),
             ("Robber", 30, 42, (70, 30)),
             ("Bear", 40, 63, (50, 50))
-    )
+        )
 }
-
 
 Damage = {
     "Zombie": 5,
