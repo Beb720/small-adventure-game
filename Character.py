@@ -9,6 +9,10 @@ class Player:
         self.weapon = "fist"
         self.weapon_damage = 10
 
+    
+    def use_item():
+        pass
+
     def damage(self, damage):
         self.health -= damage
 

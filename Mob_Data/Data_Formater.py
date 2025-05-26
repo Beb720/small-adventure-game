@@ -12,7 +12,7 @@ def old_append():
 
     Danger_Levels[D[0]][D[1]] = {"damage": D[2], "crit_damage": D[3], "crit_chances": (D[4], D[5])}
     with open("mobs.json", "w") as f:
-        json.dump(Danger_Levels, f, 4)
+        json.dump(Danger_Levels, f, indent=4)
 
 def convert_to_readable():
     with open("mobs.json", "r") as f:
@@ -40,6 +40,6 @@ Danger_Levels = {
 }
 
 with open("mobs.json", "w") as f:
-        json.dump(Danger_Levels, f, 4)
+        json.dump(Danger_Levels, f, indent=4)
     
 
