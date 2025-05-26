@@ -4,10 +4,10 @@ import random
 import json
 
 
-#with open("mobs.json", "r") as f:
-    #Mob_Data = json.load(f)
+with open("json_Files/mobs.json", "r") as f:
+    Mob_Data = json.load(f)
 
-
+"""
 Mob_Data = {
     "1": {
             "Lvl. 1 Zombie": {"damage": 5, "crit_damage": 12, "crit_chances": (75, 25)},
@@ -28,15 +28,16 @@ Mob_Data = {
             "Bear": {"damage":40, "crit_damage": 63, "crit_chances": (50, 50)}
     }
 }
-
+"""
 print(Mob_Data)
 
 class Encounter:
     def __init__(self, danger, player):
         self.player = player
         self.danger = danger
-        self.mob = random.choice(list(Mob_Data[danger].keys()))
-        print(f"You encountered a {self.mob}!")
+        random_choice = random.choice(list(Mob_Data[danger].keys()))
+        self.mob = Mob_Data[danger][random_choice]
+        print(f"You encountered a {self.mob["name"]}!")
         self.battle_loop()
 
     
@@ -57,7 +58,8 @@ class Encounter:
             self.player_attack()
 
         elif turn_choice == 2:
-            self.player.use_item()
+            if self.player.use_item():
+                self.player_turn()
 
         elif turn_choice == 3:
             self.run_away()
