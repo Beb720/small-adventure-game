@@ -3,6 +3,7 @@
 import random
 import Locations
 import Character
+import Encounters
 """
 def tick_loop():
     while True:
@@ -10,5 +11,18 @@ def tick_loop():
 """
 player = Character.Player("Bennett")
 location = Locations.Location() # initalizes Location class
-for i in range(20):
-    print(random.randint(1, 4))
+
+while True:
+
+    print("What would you like to do?")
+    print("1. Hunt mobs")
+    print("2. Travel")
+    print("3. Organize Sack")
+    action = int(input(""))
+
+    if action == 1:
+        if location.spawning:
+            Encounters.Encounter(location.danger, player)
+
+        else:
+            print("Sorry, mobs don't spawn here.")

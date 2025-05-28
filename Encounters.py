@@ -1,12 +1,8 @@
 # Encounters.py
 
+import Character
 import random
 import json
-
-
-with open("json_Files/mobs.json", "r") as f:
-    Mob_Data = json.load(f)
-
 """
 Mob_Data = {
     "1": {
@@ -29,14 +25,16 @@ Mob_Data = {
     }
 }
 """
-print(Mob_Data)
 
 class Encounter:
     def __init__(self, danger, player):
+        with open("json_Files/mobs.json", "r") as f:
+            self.Mob_Data = json.load(f)
+    
         self.player = player
         self.danger = danger
-        random_choice = random.choice(list(Mob_Data[danger].keys()))
-        self.mob = Mob_Data[danger][random_choice]
+        random_choice = random.choice(list(self.Mob_Data[danger].keys()))
+        self.mob = self.Mob_Data[danger][random_choice]
         print(f"You encountered a {self.mob["name"]}!")
         self.battle_loop()
 
@@ -49,7 +47,7 @@ class Encounter:
     
     def player_turn(self):
         print("What would you like to do?")
-        print(f"1. Attack ({self.player.weapon}: {self.player.weapon_damage})")
+        print(f"1. Attack ({self.player.weapon["name"]}: {self.player.weapon["damage"]})")
         print("2. Use an item")
         print("3. Run away")
         
@@ -81,14 +79,19 @@ class Encounter:
 
 
     def player_attack(self):
-        pass
+        if bool(random.choices((0, 1), weights=self.player.weapon["crit_chances"])):
+            self.mob["health"] -= self.player.weapon["crit_damage"]
+
+        else:
+            self.mob["health"] -= self.player.weapon["damage"]
 
 
+    def mob_turn(self):
+        if bool(random.choices((0, 1), weights=self.mob["crit_chances"])):
+            self.player.health -= self.mob["crit_damage"]
 
-
-
-
-
+        else:
+            self.player.health -= self.mob["damage"]
 
 
 
