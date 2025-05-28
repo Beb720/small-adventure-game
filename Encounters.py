@@ -25,27 +25,44 @@ Mob_Data = {
     }
 }
 """
+with open("json_Files/mobs.json", "r") as f:
+            Mob_Data = json.load(f)
 
 class Encounter:
     def __init__(self, danger, player):
-        with open("json_Files/mobs.json", "r") as f:
-            self.Mob_Data = json.load(f)
+        self.Mob_Data = Mob_Data
     
         self.player = player
         self.danger = danger
-        random_choice = random.choice(list(self.Mob_Data[danger].keys()))
-        self.mob = self.Mob_Data[danger][random_choice]
+        random_choice = random.choice(list(self.Mob_Data[str(danger)].keys()))
+        self.mob = self.Mob_Data[str(danger)][random_choice]
         print(f"You encountered a {self.mob["name"]}!")
         self.battle_loop()
 
     
     def battle_loop(self):
-        while True:
-            self.player_turn()
+        while self.player_turn() != False:
+            if self.mob["health"] <= 0:
+                print(f"You defeated {self.mob["name"]}")
+                #add drops here
+                break
+            
             self.mob_turn()
+
+            if self.player.health <= 0:
+                print("You died")
+                print("GAME OVER!")
+                input()
+                break
+        
+        return self.player
+
 
     
     def player_turn(self):
+        print(f"{self.player.name}'s Health: {self.player.health}")
+        print(f"{self.mob["name"]}'s Health: {self.mob["health"]}")
+        print()
         print("What would you like to do?")
         print(f"1. Attack ({self.player.weapon["name"]}: {self.player.weapon["damage"]})")
         print("2. Use an item")
@@ -62,6 +79,9 @@ class Encounter:
         elif turn_choice == 3:
             self.run_away()
 
+        elif turn_choice == 66:
+            return False
+
         else:
             print("That's not a valid option")
             self.player_turn()
@@ -69,7 +89,7 @@ class Encounter:
     
     def run_away(self):
         print("You attempted to run away.")
-        if self.danger < 3 and bool(random.choice(0, 1)):
+        if self.danger < 3 and bool(random.choice((0, 1))):
             print("You got away safley.")
             return False
 
@@ -92,7 +112,3 @@ class Encounter:
 
         else:
             self.player.health -= self.mob["damage"]
-
-
-
-Encounter("2", 3)

@@ -1,0 +1,54 @@
+{
+    "home": {
+        "name": "Home",
+        "spawning": false,
+        "danger": 0,
+        "adjacent_locations": [
+            "windy path"
+        ]
+    },
+    "windy path": {
+        "name": "Windy Path",
+        "spawning": true,
+        "danger": 1,
+        "adjacent_locations": [
+            "home",
+            "forest"
+        ]
+    },
+    "forest": {
+        "name": "Forest",
+        "spawning": true,
+        "danger": 2,
+        "adjacent_locations": [
+            "windy path",
+            "short path",
+            "dark forest"
+        ]
+    },
+    "short path": {
+        "name": "Short Path",
+        "spawning": true,
+        "danger": 1,
+        "adjacent_locations": [
+            "forest",
+            "village"
+        ]
+    },
+    "village": {
+        "name": "Village",
+        "spawning": false,
+        "danger": 0,
+        "adjacent_locations": [
+            "short path"
+        ]
+    },
+    "dark forest": {
+        "name": "Dark Forest",
+        "spawning": true,
+        "danger": 3,
+        "adjacent_locations": [
+            "forest"
+        ]
+    }
+}

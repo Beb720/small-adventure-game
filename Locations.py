@@ -1,4 +1,7 @@
 # Locations.py
+
+import json
+
 """
 # Function map with all locations is at the bottom of the code
 
@@ -8,40 +11,21 @@ Home | Windy Path | Forest | Short Path | Village
     
     # Dark Forrest is below Forest
 
-"""
-
-Location_List = {
-    "home": ["home", False, 0, ["windy_path"]],
-    "windy_path": ["windy_path", True, 1, ["home", "forest"]],
-    "forest": ["forest", True, 2, ["windy_path", "short_path", "dark_forest"]],
-    "short_path": ["short_path", True, 1, ["forest", "village"]],
-    "village": ["village", False, 0, ["short_path"]],
-    "dark_forest": ["dark_forest", True, 3, ["forest"]]
-}
-    
+""" 
 
 class Location:
     def __init__(self):
-        self.location = "home"
-        self.spawning = False
-        self.danger = 0
-        self.adjacent_locations = ["windy_path"]
+        with open("json_Files/locations.json", "r") as f:
+            self.Location_Data = json.load(f)
+
+
+        self.info = self.Location_Data["home"]
 
     def change(self, new_location): #changes location
-        if new_location in self.adjacent_locations:
-            self.location = Location_List[new_location][0]
-            self.spawning = Location_List[new_location][1]
-            self.danger = Location_List[new_location][2]
-            self.adjacent_locations = Location_List[new_location][3]
+        if new_location in self.info["adjacent_locations"]:
+            self.info = self.Location_Data[new_location]
+            print(f"\nYOU TRAVELED TO: {self.info["name"]}")
+            print()
+
         else:
             return "Sorry, you can't travel there."
-
-
-"""     
-location = Location()
-print(location.location)
-print(location.spawning)
-location.change("windy_path")
-print(location.location)
-print(location.spawning)
-"""

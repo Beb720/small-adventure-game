@@ -7,5 +7,32 @@
             25,
             75
         ]
+    },
+    "Wooden Bat": {
+        "name": "Wooden Bat",
+        "damage": 12,
+        "crit_damage": 15,
+        "crit_chances": [
+            50,
+            50
+        ]
+    },
+    "Wood Sword": {
+        "name": "Wood Sword",
+        "damage": 15,
+        "crit_damage": 16,
+        "crit_chances": [
+            80,
+            20
+        ]
+    },
+    "Brone Sword": {
+        "name": "Bronze Sword",
+        "damage": 20,
+        "crit_damage": 25,
+        "crit_chances": [
+            75,
+            25
+        ]
     }
 }

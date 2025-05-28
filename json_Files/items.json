@@ -1,3 +1,14 @@
-healing = ["apple", 5, "bread", 10, "bandages", 20]
-other_items = ["gold", "zombie_remains"]
-weapons = ["sword"]
+{
+    "healing": [
+        "apple",
+        5,
+        "bread",
+        10,
+        "bandages",
+        20
+    ],
+    "other_items": [
+        "gold",
+        "zombie_remains"
+    ]
+}
